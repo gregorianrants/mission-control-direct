@@ -3,11 +3,10 @@ import { io } from "socket.io-client";
 import styled from "styled-components";
 import Box from './Box'
 
-
-import '@tensorflow/tfjs-backend-cpu';
-import '@tensorflow/tfjs-backend-webgl';
-
-import * as cocoSsd from '@tensorflow-models/coco-ssd';
+// import '@tensorflow/tfjs-backend-cpu';
+// import '@tensorflow/tfjs-backend-webgl';
+//
+// import * as cocoSsd from '@tensorflow-models/coco-ssd';
 
 const StyledImage = styled.img` 
   width: 900px;
@@ -39,36 +38,36 @@ export default function Camera(){
         }
     },[])
 
-    React.useEffect(()=>{
-        async function doit(){
-            const result = await cocoSsd.load()
-            setModel(result)
-        }
-        doit()
-    },[])
-
-    React.useEffect(()=>{
-        async function doit(){
-            const result = await model.detect(imgRef.current)
-            setPrediction(result)
-        }
-        if(frameCount%15===0)  doit()
-
-    },[model,frameCount])
+    // React.useEffect(()=>{
+    //     async function doit(){
+    //         const result = await cocoSsd.load()
+    //         setModel(result)
+    //     }
+    //     doit()
+    // },[])
+    //
+    // React.useEffect(()=>{
+    //     async function doit(){
+    //         const result = await model.detect(imgRef.current)
+    //         setPrediction(result)
+    //     }
+    //     if(frameCount%15===0)  doit()
+    //
+    // },[model,frameCount])
 
 
     return(
         <Container>
             <img src={imageSrc} alt=""  ref={imgRef} width={'900px'} height={'700px'}/>
-            {prediction
-            &&
-            prediction.map((prediction,i)=>(
-                <Box bbox={prediction.bbox}
-                name={prediction.class}
-                     key={i}
-                ></Box>
-            ))
-            }8
+            {/*{prediction*/}
+            {/*&&*/}
+            {/*prediction.map((prediction,i)=>(*/}
+            {/*    <Box bbox={prediction.bbox}*/}
+            {/*    name={prediction.class}*/}
+            {/*         key={i}*/}
+            {/*    ></Box>*/}
+            {/*))*/}
+            {/*}8*/}
         </Container>
 
     )
